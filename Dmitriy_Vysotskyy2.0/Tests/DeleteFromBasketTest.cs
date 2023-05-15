@@ -8,7 +8,8 @@ namespace Dmitriy_Vysotskyy2._0.Tests;
 public class DeleteFromBasketTest
 {
     private IWebDriver _driver = new ChromeDriver();
-    
+    // private IWebDriver _driver = new EdgeDriver();
+
     private HomePage _homePage;
     private IndexPage _indexPage;
     

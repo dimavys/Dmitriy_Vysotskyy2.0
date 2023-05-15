@@ -4,7 +4,7 @@ using SeleniumExtras.PageObjects;
 
 namespace Dmitriy_Vysotskyy2._0.PageObjects;
 
-public abstract class BasePage
+public class BasePage
 {
     protected IWebDriver _driver;
     

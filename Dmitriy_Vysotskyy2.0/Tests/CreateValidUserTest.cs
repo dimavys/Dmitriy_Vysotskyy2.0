@@ -8,6 +8,7 @@ namespace Dmitriy_Vysotskyy2._0.Tests;
 public class CreateValidUserTest
 {
     private IWebDriver _driver = new ChromeDriver();
+    // private IWebDriver _driver = new EdgeDriver();
 
     private HomePage _homePage;
     

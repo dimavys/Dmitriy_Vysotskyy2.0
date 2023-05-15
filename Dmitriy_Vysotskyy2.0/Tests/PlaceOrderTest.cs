@@ -30,7 +30,7 @@ public class PlaceOrderTest
         
         var cartPage = itemPage.GoToCart();
         cartPage.PlaceOrder(new TestOrderModel());
-
+        
         Assert.IsTrue(cartPage.CheckOrderStatus());
     }
     
