@@ -5,19 +5,13 @@ using SeleniumExtras.WaitHelpers;
 
 namespace Dmitriy_Vysotskyy2._0.PageObjects;
 
-public class HomePage
+public class HomePage : BasePage
 {
-    private IWebDriver _driver;
-
     private string _urlLink = "https://www.demoblaze.com";
-    
-    private WebDriverWait _wait;
 
-    public HomePage(IWebDriver driver)
+    public HomePage(IWebDriver driver) : base(driver)
     {
-        _driver = driver;
-        _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        PageFactory.InitElements(driver, this);
+       
     }
     
     [FindsBy(How = How.Id, Using = "signin2")]
@@ -44,11 +38,11 @@ public class HomePage
     [CacheLookup]
     private IWebElement _txtPasswordLogIn;
     
-    [FindsBy(How = How.XPath, Using = "//button[contains(text()='Log In')]")] //??
+    [FindsBy(How = How.XPath, Using = "//button[contains(@class, 'btn btn-primary') and text()='Log in']")]
     [CacheLookup]
     private IWebElement _btnLogIn;
     
-    [FindsBy(How = How.XPath, Using = "//button[contains(text()='Sign Up')]")] //??
+    [FindsBy(How = How.XPath, Using = "//button[contains(@class, 'btn btn-primary') and text()='Sign up']")]
     [CacheLookup]
     private IWebElement _btnSignUp;
     
@@ -58,24 +52,37 @@ public class HomePage
         _driver.Manage().Window.Maximize();
     }
     
-    public void SignUp(string username, string password)
+    public string SignUp(string username, string password)
     {
-        _wait.Until(ExpectedConditions.ElementExists(By.Name("Sign Up"))); //DRY is out of party
+        _wait.Until(ExpectedConditions.ElementExists(By.Id("signin2"))); //DRY is out of party
         _btnOpenSignUp.Click();
-        _wait.Until(ExpectedConditions.ElementExists(By.Name("Username"))); //DRY is out of party
+        
+       // _wait.Until(ExpectedConditions.ElementExists(By.XPath("/html/body/div[2]/div/div/div[3]/button[1]"))); //DRY is out of party
+        Thread.Sleep(2000); //no idea how to solve it
+        
         _txtUsernameSignUp.SendKeys(username);
         _txtPasswordSignUp.SendKeys(password);
+        
         _btnSignUp.Click();
+        
+        _wait.Until(ExpectedConditions.AlertIsPresent());
+        return _driver.SwitchTo().Alert().Text;
     }
     
-    public void LogIn(string username, string password)
+    public IndexPage LogIn(string username, string password)
     {
-        _wait.Until(ExpectedConditions.ElementExists(By.Name("Log In"))); //DRY is out of party
+        _wait.Until(ExpectedConditions.ElementExists(By.Id("login2"))); //DRY is out of party
         _btnOpenLogIn.Click();
-        _wait.Until(ExpectedConditions.ElementExists(By.Name("Username"))); //DRY is out of party
+        
+        Thread.Sleep(2000);
+        // _wait.Until(ExpectedConditions.ElementExists(By.XPath("/html/body/div[3]/div/div/div[3]/button[2]"))); //DRY is out of party
+        
         _txtUsernameLogIn.SendKeys(username);
         _txtPasswordLogIn.SendKeys(password);
+
         _btnLogIn.Click();
+        
+        return new IndexPage(_driver);
     }
 
 }
