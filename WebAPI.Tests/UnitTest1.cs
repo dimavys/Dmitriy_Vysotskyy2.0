@@ -1,4 +1,4 @@
-namespace Dmitriy_Vysotskyy2._0;
+namespace WebAPI.Tests;
 
 public class Tests
 {
