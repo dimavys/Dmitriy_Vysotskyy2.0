@@ -8,6 +8,8 @@ namespace Dmitriy_Vysotskyy2._0.PageObjects;
 public class HomePage : BasePage
 {
     private string _urlLink = "https://www.demoblaze.com";
+    private string _btnSignUpLocator = "signin2";
+    private string _btnLogInLocator = "login2";
 
     public HomePage(IWebDriver driver) : base(driver)
     {
@@ -54,11 +56,11 @@ public class HomePage : BasePage
     
     public string SignUp(string username, string password)
     {
-        _wait.Until(ExpectedConditions.ElementExists(By.Id("signin2"))); //DRY is out of party
+        _wait.Until(ExpectedConditions.ElementExists(By.Id(_btnSignUpLocator))); //DRY is out of party
         _btnOpenSignUp.Click();
         
        // _wait.Until(ExpectedConditions.ElementExists(By.XPath("/html/body/div[2]/div/div/div[3]/button[1]"))); //DRY is out of party
-        Thread.Sleep(2000); //no idea how to solve it
+        Thread.Sleep(2000); 
         
         _txtUsernameSignUp.SendKeys(username);
         _txtPasswordSignUp.SendKeys(password);
@@ -71,7 +73,7 @@ public class HomePage : BasePage
     
     public IndexPage LogIn(string username, string password)
     {
-        _wait.Until(ExpectedConditions.ElementExists(By.Id("login2"))); //DRY is out of party
+        _wait.Until(ExpectedConditions.ElementExists(By.Id(_btnLogInLocator))); //DRY is out of party
         _btnOpenLogIn.Click();
         
         Thread.Sleep(2000);

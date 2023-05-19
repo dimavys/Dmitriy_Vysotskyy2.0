@@ -1,5 +1,5 @@
+using Dmitriy_Vysotskyy2._0.Builders;
 using Dmitriy_Vysotskyy2._0.Common;
-using Dmitriy_Vysotskyy2._0.Models;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -11,7 +11,10 @@ public class DeleteFromCartSteps : FeatureHelper
     [Given(@"an existing user has logged in")]
     public void GivenAnExistingUserHasLoggedIn()
     {
-        var user = new TestUserModel();
+        var user = new UserModelBuilder()
+            .SetLogin("charles")
+            .SetPassword("charles")
+            .Build();
         _indexPage = _homePage.LogIn(user.Login, user.Password);
     }
 

@@ -1,3 +1,4 @@
+using Dmitriy_Vysotskyy2._0.Builders;
 using Dmitriy_Vysotskyy2._0.Common;
 using Dmitriy_Vysotskyy2._0.Models;
 using FluentAssertions;
@@ -20,7 +21,10 @@ public class CreateUserSteps : FeatureHelper
     [Given(@"a user doesn't have valid data")]
     public void GivenAUserDoesntHaveValidData()
     {
-        _user = new TestUserModel();
+        _user = new UserModelBuilder()
+            .SetLogin("charles")
+            .SetPassword("charles")
+            .Build();
     }
 
     [When(@"user inserts that data")]
@@ -33,8 +37,9 @@ public class CreateUserSteps : FeatureHelper
     [Given(@"a user has valid data")]
     public void GivenAUserHasValidData()
     {
-        _user = new TestUserModel();
-        _user.MixUserData();
+        _user = new UserModelBuilder()
+            .SetRandomData()
+            .Build();
     }
 
     [Then(@"user gets ""(.*)"" alert")]

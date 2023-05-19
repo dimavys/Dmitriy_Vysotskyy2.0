@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+using Dmitriy_Vysotskyy2._0.Builders;
 using Dmitriy_Vysotskyy2._0.Common;
 using Dmitriy_Vysotskyy2._0.Models;
 using FluentAssertions;
@@ -11,7 +13,10 @@ public class PlaceOrderSteps : FeatureHelper
     [Given(@"user logged in")]
     public void GivenUserLoggedIn()
     {
-        var user = new TestUserModel();
+        var user = new UserModelBuilder()
+            .SetLogin("charles")
+            .SetPassword("charles")
+            .Build();
         _indexPage = _homePage.LogIn(user.Login, user.Password);
     }
 
@@ -26,7 +31,17 @@ public class PlaceOrderSteps : FeatureHelper
     public void WhenUserInsertsCorrectDataAndClicksPlaceOrderButton()
     {
         _cartPage = _itemPage.GoToCart();
-        _cartPage.PlaceOrder(new TestOrderModel());
+
+        var orderModel = new OrderModelBuilder()
+            .SetName("TestName")
+            .SetCountry("Ukraine")
+            .SetCity("Kyiv")
+            .SetCard("1111")
+            .SetMonth("4")
+            .SetYear("2023")
+            .Build();
+        
+        _cartPage.PlaceOrder(orderModel);
     }
     
     [Then(@"order has been created")]

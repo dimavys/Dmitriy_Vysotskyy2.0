@@ -55,9 +55,8 @@ public class CartPage : BasePage
 
     public bool CheckDeleteStatus(string itemName)
     {
-        // _wait.Until(ExpectedConditions
-        //     .ElementExists(By.XPath($"//th[text()='Price']")));
-        Thread.Sleep(2000);
+        _wait.Until(ExpectedConditions
+            .InvisibilityOfElementLocated(By.XPath($"//td[text()='{itemName}']/parent::tr//a")));
         
         var item = _driver
             .FindElements(By.XPath($"//td[text()='{itemName}']"));

@@ -2,20 +2,10 @@ namespace Dmitriy_Vysotskyy2._0.Models;
 
 public class TestOrderModel
 {
-    public string Name { get; }
-    public string Country { get; }
-    public string City { get; }
-    public string Card { get; }
-    public string Month { get; }
-    public string Year { get; }
-    
-    public TestOrderModel()
-    {
-        Name = "TestName";
-        Country = "Ukraine";
-        City = "Kyiv";
-        Card = "122";
-        Month = "5";
-        Year = "2023";
-    }
+    public string Name { get; set; }
+    public string Country { get; set; }
+    public string City { get; set;}
+    public string Card { get; set;}
+    public string Month { get;set; }
+    public string Year { get; set;}
 }
