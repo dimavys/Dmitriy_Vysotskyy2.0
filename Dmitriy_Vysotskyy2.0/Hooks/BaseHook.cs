@@ -7,21 +7,19 @@ using TechTalk.SpecFlow;
 namespace Dmitriy_Vysotskyy2._0.Hooks;
 
 [Binding]
-public sealed class BaseHook : FeatureHelper
+public class BaseHook : FeatureHelper
 {
     [BeforeScenario]
     public void BeforeScenario()
     {
-        _driver = new ChromeDriver();
-        // _driver = new EdgeDriver();
-        
-        _homePage = new HomePage(_driver);
+        var driver = DriverWrapper.GetInstance();
+        _homePage = new HomePage(driver);
         _homePage.Navigate();
     }
 
     [AfterScenario]
     public void AfterScenario()
     {
-        _driver.Quit();
+        DriverWrapper.GetInstance().Quit();
     }
 }

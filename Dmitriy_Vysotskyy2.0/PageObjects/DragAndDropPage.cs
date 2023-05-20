@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SeleniumExtras.WaitHelpers;
 
 namespace Dmitriy_Vysotskyy2._0.PageObjects;
 
@@ -14,18 +15,6 @@ public class DragAndDropPage
 
     private string _urlLink = "https://www.globalsqa.com/demo-site/draganddrop/";
     
-    [FindsBy(How = How.XPath, Using ="//h5[contains(text(), 'High Tatras')]")]
-    [CacheLookup]
-    private IWebElement _fromElement1;
-    
-    [FindsBy(How = How.XPath, Using ="//h5[contains(text(), 'High Tatras 2')]/parent::li")]
-    [CacheLookup]
-    private IWebElement _fromElement2;
-    
-    [FindsBy(How = How.XPath, Using = "//div[contains(@class,'bui-widget-content ui-state-default ui-droppable')]")]
-    [CacheLookup]
-    private IWebElement _toElement;
-
     public DragAndDropPage(IWebDriver driver)
     {
         _driver = driver;
@@ -39,15 +28,43 @@ public class DragAndDropPage
         _driver.Manage().Window.Maximize();
     }
 
-    public void DragAndDrop()
+    public void DragAndDrop(string imgName1, string imgName2)
     {
+        IWebElement fraElement = _driver.FindElement(By.CssSelector("iframe.demo-frame"));
+        _driver.SwitchTo().Frame(fraElement);
+
         Actions builder = new Actions(_driver);
-        Thread.Sleep(3000);
+        
+        var _fromElement1 = _wait.Until(ExpectedConditions.ElementIsVisible(
+            By.XPath($"//h5[contains(text(),'{imgName1}')]/parent::li")));
+        
+        var _fromElement2 = _wait.Until(ExpectedConditions.ElementIsVisible(
+            By.XPath($"//h5[contains(text(),'{imgName2}')]/parent::li")));
+        
+        var _toElement = _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("trash")));
 
         builder.DragAndDrop(_fromElement1, _toElement).Perform();
         builder.DragAndDrop(_fromElement2, _toElement).Perform();
 
+        _driver.SwitchTo().DefaultContent();
     }
-    
+
+    public bool CheckImageStatus(string imgName1, string imgName2)
+    {
+        IWebElement fraElement = _driver.FindElement(By.CssSelector("iframe.demo-frame"));
+        _driver.SwitchTo().Frame(fraElement);
+        
+        var trashElement = _driver.FindElement(By.Id("trash"));
+        
+        var elements = trashElement
+            .FindElements(By.XPath($"//h5[contains(text(),'{imgName1}')] | //h5[contains(text(),'{imgName2}')]"));
+
+        if (elements.Count == 2)
+            return true;
+        
+        _driver.SwitchTo().DefaultContent();
+        return false;
+
+    }
     
 }

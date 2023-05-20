@@ -51,6 +51,6 @@ public class CreateUserSteps : FeatureHelper
     [Then(@"close the browser")]
     public void ThenCloseTheBrowser()
     {
-        _driver.Quit();
+        
     }
 }
