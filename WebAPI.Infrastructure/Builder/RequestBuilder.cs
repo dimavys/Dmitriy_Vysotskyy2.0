@@ -4,7 +4,7 @@ namespace WebAPI.Infrastructure.Builder;
 
 public class RequestBuilder
 {
-    private RestRequest _restRequest;
+    private RestRequest _restRequest = new RestRequest();
 
     public RequestBuilder SetUrl(string url)
     {
