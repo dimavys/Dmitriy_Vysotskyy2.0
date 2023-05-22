@@ -7,15 +7,22 @@ namespace WebAPI.Infrastructure;
 
 public class RestApiClient 
 {
-    private readonly RestClient _client;
+    private RestClient _client;
+    private string _token;
 
     public RestApiClient()
     {
-        var options = new RestClientOptions("https://restful-booker.herokuapp.com/auth") {
-            Authenticator = new HttpBasicAuthenticator("username", "password")
-        };
-        
-        _client = new RestClient(options);
+        _client = new RestClient("https://restful-booker.herokuapp.com");
+    }
+   
+    
+    public async Task Authenticate(string username, string password)
+    {
+        var request = RequestService.BuildAuthRequest(username, password);
+            
+        var response = await _client.ExecutePostAsync<AuthenticationResponse>(request);
+
+        _token = response.Data?.token;
     }
 
     public async Task<RestResponse<BookingMetaDataExtended>> CreateBooking(BookingMetaData data)
@@ -27,14 +34,21 @@ public class RestApiClient
         return response;
     }
     
-    public async Task DeleteBooking()
+    public async Task<RestResponse> DeleteBooking(int id)
     {
-        throw new NotImplementedException();
+        var request = RequestService.BuildDeleteRequest(id, _token);
+        var response = await _client.ExecuteAsync(request);
+
+        return response;
     }
     
-    public async Task UpdateBooking()
+    public async Task <RestResponse<BookingMetaData>> UpdateBooking(BookingMetaDataExtended data)
     {
-        throw new NotImplementedException();
+        var request = RequestService.BuildUpdateRequest(data, _token);
+
+        var response = await _client.ExecutePutAsync<BookingMetaData>(request);
+
+        return response;
     }
     
     public void Dispose()

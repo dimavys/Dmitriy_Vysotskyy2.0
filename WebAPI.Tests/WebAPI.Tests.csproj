@@ -15,7 +15,7 @@
         <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
         <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
         <PackageReference Include="coverlet.collector" Version="3.1.2" />
-        <PackageReference Include="RestSharp.Newtonsoft.Json.Extensions" Version="1.0.4" />
+        <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.1-alpha.0.3" />
         <PackageReference Include="SpecFlow.NUnit" Version="4.0.31-beta" />
     </ItemGroup>
 

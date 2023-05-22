@@ -2,6 +2,6 @@ namespace WebAPI.Infrastructure.RequestsResponses;
 
 public class Bookingdates
 {
-    public string checkin { get; set; }
-    public string checkout { get; set; }
+    public DateOnly checkin { get; set; }
+    public DateOnly checkout { get; set; }
 }
