@@ -14,9 +14,6 @@ Feature: User can create an account
         And a user has valid data
         When user inserts that data
         Then user gets "Sign up successful." alert
-    
-    @after
-    Scenario: Tear down browser
-        Then close the browser
+  
 
     

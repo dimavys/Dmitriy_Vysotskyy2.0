@@ -1,5 +1,5 @@
+using Dmitriy_Vysotskyy2._0.Builders;
 using Dmitriy_Vysotskyy2._0.Common;
-using Dmitriy_Vysotskyy2._0.Models;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -13,7 +13,11 @@ public class AddToCartSteps : FeatureHelper
     [Given(@"a user has logged in")]
     public void GivenAUserHasLoggedIn()
     {
-        var user = new TestUserModel();
+        var user = new UserModelBuilder()
+            .SetLogin("charles")
+            .SetPassword("charles")
+            .Build();
+        
         _indexPage = _homePage.LogIn(user.Login, user.Password);
     }
     
