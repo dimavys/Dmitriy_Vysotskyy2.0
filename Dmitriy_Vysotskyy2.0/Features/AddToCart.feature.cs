@@ -21,12 +21,14 @@ namespace Dmitriy_Vysotskyy2._0.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("User can add to cart item")]
+    [NUnit.Framework.CategoryAttribute("ShopTag")]
     public partial class UserCanAddToCartItemFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
+        private static string[] featureTags = new string[] {
+                "ShopTag"};
         
 #line 1 "AddToCart.feature"
 #line hidden
@@ -80,7 +82,7 @@ namespace Dmitriy_Vysotskyy2._0.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Logged in user can add item to cart", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 5
+#line 6
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,16 +92,16 @@ namespace Dmitriy_Vysotskyy2._0.Features
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
         testRunner.Given("a user has logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
+#line 8
         testRunner.And("the user has opened the item \"Iphone 6 32gb\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 8
+#line 9
         testRunner.When("the user has clicks Add to cart \"Iphone 6 32gb\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 10
         testRunner.Then("the user gets \"Product added.\" alert", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

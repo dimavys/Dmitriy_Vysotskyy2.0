@@ -1,3 +1,4 @@
+@ShopTag
 Feature: User can remove added item from cart
 	As a user
 	I want to remove an item added to cart 

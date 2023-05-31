@@ -1,5 +1,4 @@
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
@@ -13,7 +12,7 @@ public class DragAndDropPage
     
     private WebDriverWait _wait;
 
-    private string _urlLink = "https://www.globalsqa.com/demo-site/draganddrop/";
+    private string _urlLink = ApplicationConfig.DragAndDropURL;
     
     public DragAndDropPage(IWebDriver driver)
     {

@@ -1,3 +1,4 @@
+@ShopTag
 Feature: User can add to cart item
     As a logged in user 
     I want to add selected item to cart

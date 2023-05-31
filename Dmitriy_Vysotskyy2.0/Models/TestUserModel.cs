@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace Dmitriy_Vysotskyy2._0.Models;
 
 public class TestUserModel

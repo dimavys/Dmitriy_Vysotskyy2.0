@@ -1,3 +1,4 @@
+@ShopTag
 Feature: User can place order
     As a user
     I want to place an order after I added items to cart

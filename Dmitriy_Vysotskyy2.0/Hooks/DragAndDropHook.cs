@@ -7,7 +7,7 @@ namespace Dmitriy_Vysotskyy2._0.Hooks;
 [Binding]
 public class DragAndDropHook : FeatureHelper
 {
-    [BeforeScenario("DragAndDropTag")]
+    [BeforeFeature("DragAndDropTag")]
     public static void BeforeFeature()
     {
         var driver = DriverWrapper.GetInstance();

@@ -1,5 +1,4 @@
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 
@@ -7,7 +6,7 @@ namespace Dmitriy_Vysotskyy2._0.PageObjects;
 
 public class HomePage : BasePage
 {
-    private string _urlLink = "https://www.demoblaze.com";
+    private string _urlLink = ApplicationConfig.HomePageURL;
     private string _btnSignUpLocator = "signin2";
     private string _btnLogInLocator = "login2";
 

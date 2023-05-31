@@ -17,6 +17,10 @@ public sealed class DriverWrapper
                 var instancePageSource = _instance.PageSource;
                 return false;
             }
+            catch (UnhandledAlertException)
+            {
+                return false;
+            }
             catch
             {
                 return true;

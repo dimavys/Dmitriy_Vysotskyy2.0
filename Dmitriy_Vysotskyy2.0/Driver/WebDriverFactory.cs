@@ -16,7 +16,7 @@ public class WebDriverFactory
             case BrowserType.Chrome:
                 return new ChromeDriver();
             default:
-                throw new Exception();
+                throw new Exception("Invalid browser type provided.");
         }
     }
 }

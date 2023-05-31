@@ -1,6 +1,5 @@
 using Dmitriy_Vysotskyy2._0.Models;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 

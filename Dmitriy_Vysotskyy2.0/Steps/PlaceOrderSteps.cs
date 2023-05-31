@@ -1,7 +1,5 @@
-using System.Collections.Immutable;
 using Dmitriy_Vysotskyy2._0.Builders;
 using Dmitriy_Vysotskyy2._0.Common;
-using Dmitriy_Vysotskyy2._0.Models;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -10,23 +8,6 @@ namespace Dmitriy_Vysotskyy2._0.Steps;
 [Binding]
 public class PlaceOrderSteps : FeatureHelper
 {
-    [Given(@"user logged in")]
-    public void GivenUserLoggedIn()
-    {
-        var user = new UserModelBuilder()
-            .SetLogin("charles")
-            .SetPassword("charles")
-            .Build();
-        _indexPage = _homePage.LogIn(user.Login, user.Password);
-    }
-
-    [Given(@"user has added ""(.*)"" to cart")]
-    public void GivenUserHasAddedToCart(string itemName)
-    {
-        _itemPage = _indexPage.ViewItem(itemName);
-        _itemPage.AddToCart(itemName);
-    }
-
     [When(@"user inserts correct data and clicks place order button")]
     public void WhenUserInsertsCorrectDataAndClicksPlaceOrderButton()
     {
