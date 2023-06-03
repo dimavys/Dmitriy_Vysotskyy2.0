@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A}|Default">
+  <MonoDevelop.Ide.ItemProperties.WebAPI.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/mac/Desktop/univ/3 course/2 sem/Testing/Dmitriy_Vysotskyy2.0/WebAPI.Tests/UnitTest1.cs" relfile="WebAPI.Tests/UnitTest1.cs" line="38" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI.Tests/UnitTest1.cs">
+    <Files>
+      <File FileName="WebAPI.Tests/UnitTest1.cs" Line="28" Column="32" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Dmitriy_Vysotskyy2.0" expanded="True">
+            <Node name="WebAPI.Tests" expanded="True">
+              <Node name="Features" expanded="True" />
+              <Node name="UnitTest1.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Dmitriy_Vysotskyy2.0" expanded="True">
+            <Node name="WebAPI.Tests" expanded="True">
+              <Node name="WebAPI.Tests" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

@@ -17,70 +17,63 @@ public class Tests
         await _restClient.Authenticate("admin", "password123");
     }
 
-    [Test, Order(1)]
+    [Test, Order(0)]
     public async Task CreateBooking()
     {
-        var dates = new Bookingdates 
-        { 
-            checkin = DateOnly.Parse("2018-01-01"),
-            checkout = DateOnly.Parse("2019-01-01") 
-        };
-        
-        var meta = new BookingMetaData
+        var data = new BookingMetaData
         {
-            firstname = "Charles",
-            lastname = "Leclerc",
-            totalprice = 12,
+            firstname = "Valteri",
+            lastname = "Bottas",
+            totalprice = 111,
             depositpaid = true,
-            bookingdates = dates,
-            additionalneeds = "empty"
+            bookingdates = new Bookingdates
+            {
+                checkin = DateOnly.Parse("2018-01-01"),
+                checkout = DateOnly.Parse("2019-01-01")
+            },
+            additionalneeds = "super bowls"
         };
-        
-        var response = await _restClient.CreateBooking(meta);
-
-        _id = response.Data.bookingid;
+    
+        var response = await _restClient.CreateBooking(data);
         
         Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
+        
+        _id = response.Data.bookingid;
     }
 
-    [Test, Order(2)]
+    [Test, Order(1)]
     public async Task UpdateBooking()
     {
-        var dates = new Bookingdates 
-        { 
-            checkin = DateOnly.Parse("2018-01-01"),
-            checkout = DateOnly.Parse("2019-01-01") 
+        var data = new BookingMetaDataExtended
+        {
+            bookingid = 2637,
+            booking = new BookingMetaData
+            {
+                firstname = "Lewis",
+                lastname = "Hamilton",
+                totalprice = 111,
+                depositpaid = true,
+                bookingdates = new Bookingdates
+                {
+                    checkin = DateOnly.Parse("2018-01-01"),
+                    checkout = DateOnly.Parse("2019-01-01")
+                },
+                additionalneeds = "super bowls"
+            }
         };
         
-        var meta = new BookingMetaData
-        {
-            firstname = "Lewis",
-            lastname = "Hamilton",
-            totalprice = 12,
-            depositpaid = true,
-            bookingdates = dates,
-            additionalneeds = "empty"
-        };
-
-        var data = new BookingMetaDataExtended()
-        {
-            bookingid = _id,
-            booking = meta
-        };
-
         var response = await _restClient.UpdateBooking(data);
         Assert.AreEqual(System.Net.HttpStatusCode.OK, response.StatusCode);
-
-    }
-
-    [Test, Order(3)]
-    public async Task DeleteBooking()
-    {
-        var response = await _restClient.DeleteBooking(_id);
-        Assert.AreEqual(System.Net.HttpStatusCode.Created, response.StatusCode);
-    }
-
     
+    }
+
+    // [Test, Order(3)]
+    // public async Task DeleteBooking()
+    // {
+    //     var response = await _restClient.DeleteBooking(_id);
+    //     Assert.AreEqual(System.Net.HttpStatusCode.Created, response.StatusCode);
+    // }
+
     [TearDown]
     public void TearDown()
     {

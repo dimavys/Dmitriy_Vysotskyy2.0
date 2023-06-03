@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using WebAPI.Infrastructure.RequestsResponses;
@@ -12,7 +13,7 @@ public class RestApiClient
 
     public RestApiClient()
     {
-        _client = new RestClient("https://restful-booker.herokuapp.com");
+        _client = new RestClient(RestClientConfig.ClientUrl);
     }
    
     
@@ -25,18 +26,19 @@ public class RestApiClient
         _token = response.Data?.token;
     }
 
-    public async Task<RestResponse<BookingMetaDataExtended>> CreateBooking(BookingMetaData data)
+    public async Task<RestResponse<BookingMetaDataExtended>> CreateBooking(BookingMetaData testData)
     {
-        var request = RequestService.BuildPostRequest(data);
+        var request = RequestService.BuildPostRequest(testData);
 
         var response = await _client.ExecutePostAsync<BookingMetaDataExtended>(request);
 
         return response;
     }
-    
+
     public async Task<RestResponse> DeleteBooking(int id)
     {
         var request = RequestService.BuildDeleteRequest(id, _token);
+        
         var response = await _client.ExecuteAsync(request);
 
         return response;

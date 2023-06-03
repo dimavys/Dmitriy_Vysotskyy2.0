@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace WebAPI.Infrastructure.Builder;
@@ -9,6 +10,12 @@ public class RequestBuilder
     public RequestBuilder SetUrl(string url)
     {
         _restRequest = new RestRequest(url);
+        return this;
+    }
+    
+    public RequestBuilder SetPostUrl(string url)
+    {
+        _restRequest = new RestRequest(url, Method.Post);
         return this;
     }
     public RequestBuilder SetDeleteUrl(string url)
