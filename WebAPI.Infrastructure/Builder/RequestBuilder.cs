@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using RestSharp;
 
 namespace WebAPI.Infrastructure.Builder;

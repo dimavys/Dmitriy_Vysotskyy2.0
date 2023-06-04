@@ -91,18 +91,15 @@ namespace WebAPI.Tests.Features
             {
                 await this.ScenarioStartAsync();
 #line 5
-  await testRunner.GivenAsync("a user has created his booking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  await testRunner.GivenAsync("valid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
-  await testRunner.AndAsync("he created rest request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  await testRunner.WhenAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
-  await testRunner.WhenAsync("he posts his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  await testRunner.ThenAsync("he receives 200 OK status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 8
-  await testRunner.ThenAsync("he receives 200OK status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 9
   await testRunner.AndAsync("he gets valid response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -116,7 +113,7 @@ namespace WebAPI.Tests.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can\'t create a booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 10
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -126,17 +123,14 @@ namespace WebAPI.Tests.Features
             else
             {
                 await this.ScenarioStartAsync();
+#line 11
+  await testRunner.GivenAsync("invalid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 12
-  await testRunner.GivenAsync("a user has invalid data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  await testRunner.WhenAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
-  await testRunner.AndAsync("he created rest request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 14
-  await testRunner.WhenAsync("he posts his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
-  await testRunner.ThenAsync("he receives wrong status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  await testRunner.ThenAsync("he receives 500 Internal server error code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

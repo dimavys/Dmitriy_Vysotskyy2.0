@@ -80,7 +80,7 @@ namespace WebAPI.Tests.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can update booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 5
+#line 4
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -90,20 +90,59 @@ namespace WebAPI.Tests.Features
             else
             {
                 await this.ScenarioStartAsync();
+#line 5
+  await testRunner.GivenAsync("valid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 6
-  await testRunner.GivenAsync("a user has created his new booking", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  await testRunner.AndAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
-  await testRunner.AndAsync("he created rest request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  await testRunner.AndAsync("valid data for put has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
   await testRunner.WhenAsync("he puts his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-  await testRunner.ThenAsync("he receives 200OK status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  await testRunner.ThenAsync("he receives 200 OK status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
   await testRunner.AndAsync("he gets valid response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User cannot update booking")]
+        public async System.Threading.Tasks.Task UserCannotUpdateBooking()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User cannot update booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 12
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 13
+  await testRunner.GivenAsync("valid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 14
+  await testRunner.AndAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 15
+  await testRunner.AndAsync("invalid data for put has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 16
+  await testRunner.WhenAsync("he puts his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 17
+  await testRunner.ThenAsync("he receives 400 Bad request status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

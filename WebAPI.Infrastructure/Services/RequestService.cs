@@ -42,11 +42,11 @@ public static class RequestService
     public static RestRequest BuildUpdateRequest(BookingMetaDataExtended data, string token)
     {
         var request = new RequestBuilder()
-            .SetUpdateUrl("/booking/" + data.bookingid)
+            .SetUpdateUrl("/booking/" + data.Bookingid)
             .SetHeader("Content-Type", "application/json")
             .SetHeader("Accept", "application/json")
             .SetHeader("Cookie","token=" + token)
-            .SetBody(data.booking)
+            .SetBody(data.Booking)
             .Build();
 
         return request;

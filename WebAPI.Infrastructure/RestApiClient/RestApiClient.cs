@@ -1,12 +1,10 @@
-using Newtonsoft.Json;
 using RestSharp;
-using RestSharp.Authenticators;
 using WebAPI.Infrastructure.RequestsResponses;
 using WebAPI.Infrastructure.Services;
 
 namespace WebAPI.Infrastructure;
 
-public class RestApiClient 
+public class RestApiClient : IRestApiClient, IDisposable
 {
     private RestClient _client;
     private string _token;
@@ -15,7 +13,6 @@ public class RestApiClient
     {
         _client = new RestClient(RestClientConfig.ClientUrl);
     }
-   
     
     public async Task Authenticate(string username, string password)
     {
@@ -37,6 +34,8 @@ public class RestApiClient
 
     public async Task<RestResponse> DeleteBooking(int id)
     {
+        await Authenticate(UserStorage.Login, UserStorage.Password);
+        
         var request = RequestService.BuildDeleteRequest(id, _token);
         
         var response = await _client.ExecuteAsync(request);
@@ -46,6 +45,8 @@ public class RestApiClient
     
     public async Task <RestResponse<BookingMetaData>> UpdateBooking(BookingMetaDataExtended data)
     {
+        await Authenticate(UserStorage.Login, UserStorage.Password);
+
         var request = RequestService.BuildUpdateRequest(data, _token);
 
         var response = await _client.ExecutePutAsync<BookingMetaData>(request);

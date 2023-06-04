@@ -1,4 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3c480c51_002De9b6_002D4a90_002Dbfb2_002Df856f63e8dbf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Dmitriy_Vysotskyy2.0&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;ProjectFile&gt;B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A/f:UnitTest1.cs&lt;/ProjectFile&gt;
+  &lt;Or&gt;
+    &lt;ProjectFile&gt;B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A/f:UnitTest1.cs&lt;/ProjectFile&gt;
+    &lt;ProjectFile&gt;B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A/d:Features/f:CreateBooking.feature.cs&lt;/ProjectFile&gt;
+    &lt;ProjectFile&gt;B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A/d:Features/f:DeleteBooking.feature.cs&lt;/ProjectFile&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;NUnit3x::B3AE3C3D-F4DB-49B3-A8E0-9DCA2B93BE0A::net6.0::WebAPI.Tests.Features.UpdateBookingFeature&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

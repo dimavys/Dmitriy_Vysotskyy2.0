@@ -74,12 +74,12 @@ namespace WebAPI.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        public async System.Threading.Tasks.Task AddTwoNumbers()
+        [NUnit.Framework.DescriptionAttribute("User can delete booking")]
+        public async System.Threading.Tasks.Task UserCanDeleteBooking()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can delete booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -91,16 +91,49 @@ namespace WebAPI.Tests.Features
             {
                 await this.ScenarioStartAsync();
 #line 5
-  await testRunner.GivenAsync("a user has specified id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  await testRunner.GivenAsync("valid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
-  await testRunner.AndAsync("he created rest request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  await testRunner.AndAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
-  await testRunner.WhenAsync("he deletes his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  await testRunner.AndAsync("a user has specified id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-  await testRunner.ThenAsync("he receives 201Created status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  await testRunner.WhenAsync("user executes delete request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 9
+  await testRunner.ThenAsync("he receives 201 Created status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User cannot delete booking")]
+        public async System.Threading.Tasks.Task UserCannotDeleteBooking()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User cannot delete booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 11
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 12
+  await testRunner.GivenAsync("a user has specified invalid id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 13
+  await testRunner.WhenAsync("user executes delete request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 14
+  await testRunner.ThenAsync("he receives 405 Method not allowed status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

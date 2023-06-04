@@ -2,10 +2,10 @@ namespace WebAPI.Infrastructure.RequestsResponses;
 
 public class BookingMetaData
 {
-    public string firstname { get; set; }
-    public string lastname { get; set; }
-    public int totalprice { get; set; }
-    public bool depositpaid { get; set; }
-    public Bookingdates bookingdates { get; set; }
-    public string additionalneeds { get; set; }
+    public string Firstname { get; set; }
+    public string Lastname { get; set; }
+    public int Totalprice { get; set; }
+    public bool Depositpaid { get; set; }
+    public Bookingdates Bookingdates { get; set; }
+    public string Additionalneeds { get; set; }
 }
