@@ -11,18 +11,6 @@ public class CreateUserSteps
 {
     private TestUserModel _user;
     private string _alertText;
-    
-    [Then(@"user gets ""(.*)"" alert")]
-    public void ThenUserGetsAlert(string expectedAlert)
-    {
-        _alertText.Should().Be(expectedAlert);
-    }
-
-    [When(@"user fills signup popup with data")]
-    public void WhenUserFillsSignupPopupWithData()
-    {
-        _alertText = FeatureHelper.HomePage.SignUp(_user.Login,_user.Password);
-    }
 
     [Given(@"valid data for login has been prepared")]
     public void GivenValidDataForLoginHasBeenPrepared()
@@ -39,5 +27,17 @@ public class CreateUserSteps
             .SetLogin("charles")
             .SetPassword("charles")
             .Build();
+    }
+
+    [When(@"user fills signup popup with data")]
+    public void WhenUserFillsSignupPopupWithData()
+    {
+        _alertText = FeatureHelper.HomePage.SignUp(_user.Login,_user.Password);
+    }
+    
+    [Then(@"user gets ""(.*)"" alert")]
+    public void ThenUserGetsAlert(string expectedAlert)
+    {
+        _alertText.Should().Be(expectedAlert);
     }
 }

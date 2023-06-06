@@ -10,6 +10,13 @@ public class DragAndDropsSteps
     private string _imageName1;
     private string _imageName2;
     
+    [Given(@"a user has selected ""(.*)"" and ""(.*)"" imgs")]
+    public void GivenAUserHasSelectedAndImgs(string img1, string img2)
+    {
+        _imageName1 = img1;
+        _imageName2 = img2;
+    }
+    
     [When(@"user drag and drops them to trash")]
     public void WhenUserDragAndDropsThemToTrash()
     {
@@ -21,12 +28,5 @@ public class DragAndDropsSteps
     {
         FeatureHelper.DragAndDropPage.CheckImageStatus(_imageName1, _imageName2)
             .Should().Be(true);
-    }
-
-    [Given(@"a user has selected ""(.*)"" and ""(.*)"" imgs")]
-    public void GivenAUserHasSelectedAndImgs(string img1, string img2)
-    {
-        _imageName1 = img1;
-        _imageName2 = img2;
     }
 }

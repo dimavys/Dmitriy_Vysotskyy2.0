@@ -1,4 +1,3 @@
-using Dmitriy_Vysotskyy2._0.Common;
 using TechTalk.SpecFlow;
 
 namespace Dmitriy_Vysotskyy2._0.Hooks;
@@ -10,6 +9,5 @@ public class BaseHook
     public static void AfterScenario()
     {
         DriverWrapper.GetInstance().Quit();
-        //DriverWrapper.GetInstance().Dispose();
     }
 }
