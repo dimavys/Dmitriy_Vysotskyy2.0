@@ -1,26 +1,30 @@
-using Dmitriy_Vysotskyy2._0.Common;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace Dmitriy_Vysotskyy2._0.Steps;
 
 [Binding]
-public class AddToCartSteps : FeatureHelper
+public class AddToCartSteps
 {
     private string _alertText;
+    private readonly ScenarioContext _scenarioContext;
+    
+    public AddToCartSteps(ScenarioContext scenarioContext)
+    {
+        _scenarioContext = scenarioContext;
+    }
     
     [Given(@"the user has opened the item ""(.*)""")]
     public void GivenTheUserHasOpenedTheItem(string itemName)
     {
-        _itemPage = _indexPage.ViewItem(itemName);
-        
+        _scenarioContext.ItemPage = _scenarioContext.IndexPage.ViewItem(itemName);
     }
     
     [When(@"the user has clicks Add to cart ""(.*)"" button")]
     public void WhenTheUserHasClicksAddToCartButton(string itemName)
     {
-        _itemPage.AddToCart(itemName);
-        _alertText = _itemPage.GetAlert();
+        _scenarioContext.ItemPage.AddToCart(itemName);
+        _alertText = _scenarioContext.ItemPage.GetAlert();
     }
     
     [Then(@"the user gets ""(.*)"" alert")]

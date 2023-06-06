@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 namespace Dmitriy_Vysotskyy2._0.S;
 
 [Binding]
-public class DragAndDropsSteps : FeatureHelper
+public class DragAndDropsSteps
 {
     private string _imageName1;
     private string _imageName2;
@@ -13,13 +13,13 @@ public class DragAndDropsSteps : FeatureHelper
     [When(@"user drag and drops them to trash")]
     public void WhenUserDragAndDropsThemToTrash()
     {
-        _dragAndDropPage.DragAndDrop(_imageName1, _imageName2);
+        FeatureHelper.DragAndDropPage.DragAndDrop(_imageName1, _imageName2);
     }
 
     [Then(@"images are in trash")]
     public void ThenImagesAreInTrash()
     {
-        _dragAndDropPage.CheckImageStatus(_imageName1, _imageName2)
+        FeatureHelper.DragAndDropPage.CheckImageStatus(_imageName1, _imageName2)
             .Should().Be(true);
     }
 

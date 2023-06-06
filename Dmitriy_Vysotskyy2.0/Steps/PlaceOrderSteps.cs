@@ -1,17 +1,22 @@
 using Dmitriy_Vysotskyy2._0.Builders;
-using Dmitriy_Vysotskyy2._0.Common;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace Dmitriy_Vysotskyy2._0.Steps;
 
 [Binding]
-public class PlaceOrderSteps : FeatureHelper
+public class PlaceOrderSteps
 {
+    private readonly ScenarioContext _scenarioContext;
+    public PlaceOrderSteps(ScenarioContext scenarioContext)
+    {
+        _scenarioContext = scenarioContext;
+    }
+    
     [When(@"user inserts correct data and clicks place order button")]
     public void WhenUserInsertsCorrectDataAndClicksPlaceOrderButton()
     {
-        _cartPage = _itemPage.GoToCart();
+        _scenarioContext.CartPage = _scenarioContext.ItemPage.GoToCart();
 
         var orderModel = new OrderModelBuilder()
             .SetName("TestName")
@@ -22,13 +27,13 @@ public class PlaceOrderSteps : FeatureHelper
             .SetYear("2023")
             .Build();
         
-        _cartPage.PlaceOrder(orderModel);
+        _scenarioContext.CartPage.PlaceOrder(orderModel);
     }
     
     [Then(@"order has been created")]
     public void ThenOrderHasBeenCreated()
     {
-        _cartPage.CheckOrderStatus()
+        _scenarioContext.CartPage.CheckOrderStatus()
             .Should().Be(true);
     }
 }

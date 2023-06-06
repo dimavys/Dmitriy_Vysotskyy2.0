@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Dmitriy_Vysotskyy2._0.Steps;
 
 [Binding]
-public class CreateUserSteps : FeatureHelper
+public class CreateUserSteps 
 {
     private TestUserModel _user;
     private string _alertText;
@@ -21,7 +21,7 @@ public class CreateUserSteps : FeatureHelper
     [When(@"user fills signup popup with data")]
     public void WhenUserFillsSignupPopupWithData()
     {
-        _alertText = _homePage.SignUp(_user.Login,_user.Password);
+        _alertText = FeatureHelper.HomePage.SignUp(_user.Login,_user.Password);
     }
 
     [Given(@"valid data for login has been prepared")]

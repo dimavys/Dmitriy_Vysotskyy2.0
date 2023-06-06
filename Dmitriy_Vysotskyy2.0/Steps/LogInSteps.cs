@@ -5,8 +5,14 @@ using TechTalk.SpecFlow;
 namespace Dmitriy_Vysotskyy2._0.Steps;
 
 [Binding]
-public class LogInSteps : FeatureHelper
+public class LogInSteps
 {
+    private readonly ScenarioContext _scenarioContext;
+    public LogInSteps(ScenarioContext scenarioContext)
+    {
+        _scenarioContext = scenarioContext;
+    }
+    
     [Given(@"an existing user has logged in")]
     [Given(@"a user has logged in")]
     [Given(@"user logged in")]
@@ -16,6 +22,6 @@ public class LogInSteps : FeatureHelper
             .SetLogin("charles")
             .SetPassword("charles")
             .Build();
-        _indexPage = _homePage.LogIn(user.Login, user.Password);
+        _scenarioContext.IndexPage = FeatureHelper.HomePage.LogIn(user.Login, user.Password);
     }
 }
