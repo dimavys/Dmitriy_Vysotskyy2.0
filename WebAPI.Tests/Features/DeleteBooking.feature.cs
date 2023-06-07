@@ -105,6 +105,9 @@ namespace WebAPI.Tests.Features
 #line 9
   await testRunner.ThenAsync("he receives 201 Created status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 10
+  await testRunner.AndAsync("Booking Id must not be present among the others", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -116,7 +119,7 @@ namespace WebAPI.Tests.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User cannot delete booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 12
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -126,13 +129,13 @@ namespace WebAPI.Tests.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
+#line 13
   await testRunner.GivenAsync("a user has specified invalid id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 13
+#line 14
   await testRunner.WhenAsync("user executes delete request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 15
   await testRunner.ThenAsync("he receives 405 Method not allowed status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

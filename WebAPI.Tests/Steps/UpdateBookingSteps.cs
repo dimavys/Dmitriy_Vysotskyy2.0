@@ -63,4 +63,11 @@ public class UpdateBookingSteps : FeatureHelper
     {
         _putResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
     }
+
+    [Then(@"get booking by id data must be equal to created data")]
+    public async Task ThenGetBookingByIdDataMustBeEqualToPutResponseData()
+    {
+        var getResponse = await _restApiClient.GetBookingById(_data.Bookingid);
+        getResponse.Data.Should().BeEquivalentTo(_data.Booking);
+    }
 }

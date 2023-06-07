@@ -108,6 +108,9 @@ namespace WebAPI.Tests.Features
 #line 10
   await testRunner.AndAsync("he gets valid response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 11
+  await testRunner.AndAsync("get booking by id data must be equal to put response data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -119,7 +122,7 @@ namespace WebAPI.Tests.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User cannot update booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 13
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -129,19 +132,19 @@ namespace WebAPI.Tests.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 13
+#line 14
   await testRunner.GivenAsync("valid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 15
   await testRunner.AndAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 15
+#line 16
   await testRunner.AndAsync("invalid data for put has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 16
+#line 17
   await testRunner.WhenAsync("he puts his data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 17
+#line 18
   await testRunner.ThenAsync("he receives 400 Bad request status code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

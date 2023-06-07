@@ -43,13 +43,31 @@ public class RestApiClient : IRestApiClient, IDisposable
         return response;
     }
     
-    public async Task <RestResponse<BookingMetaData>> UpdateBooking(BookingMetaDataExtended data)
+    public async Task<RestResponse<BookingMetaData>> UpdateBooking(BookingMetaDataExtended data)
     {
         await Authenticate(UserStorage.Login, UserStorage.Password);
 
         var request = RequestService.BuildUpdateRequest(data, _token);
 
         var response = await _client.ExecutePutAsync<BookingMetaData>(request);
+
+        return response;
+    }
+
+    public async Task<RestResponse<List<Booking>>> GetBookingIds()
+    {
+        var request = RequestService.BuildBookingIdsRequest();
+
+        var response = await _client.ExecuteGetAsync<List<Booking>>(request);
+
+        return response;
+    }
+    
+    public async Task<RestResponse<BookingMetaData>> GetBookingById(int id)
+    {
+        var request = RequestService.BuildGetRequest(id);
+
+        var response = await _client.ExecuteGetAsync<BookingMetaData>(request);
 
         return response;
     }

@@ -51,4 +51,23 @@ public static class RequestService
 
         return request;
     }
+    
+    public static RestRequest BuildBookingIdsRequest()
+    {
+        var request = new RequestBuilder()
+            .SetUrl("/booking")
+            .Build();
+        
+        return request;
+    }
+
+    public static RestRequest BuildGetRequest(int id)
+    {
+        var request = new RequestBuilder()
+            .SetUrl("/booking/" + id)
+            .SetHeader("Accept", "application/json")
+            .Build();
+
+        return request;
+    }
 }

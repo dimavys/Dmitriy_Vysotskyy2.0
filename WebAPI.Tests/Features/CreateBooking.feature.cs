@@ -102,6 +102,12 @@ namespace WebAPI.Tests.Features
 #line 8
   await testRunner.AndAsync("he gets valid response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 9
+  await testRunner.AndAsync("bookingId must be present among others", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
+  await testRunner.AndAsync("get booking by id data must be equal to post response data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
@@ -113,7 +119,7 @@ namespace WebAPI.Tests.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can\'t create a booking", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+#line 12
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -123,13 +129,13 @@ namespace WebAPI.Tests.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 11
+#line 13
   await testRunner.GivenAsync("invalid data for post has been prepared", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 14
   await testRunner.WhenAsync("user executes post request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 13
+#line 15
   await testRunner.ThenAsync("he receives 500 Internal server error code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

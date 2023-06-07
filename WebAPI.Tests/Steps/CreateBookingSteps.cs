@@ -27,6 +27,18 @@ public class CreateBookingSteps : FeatureHelper
             .Build();
     }
     
+    [Given(@"invalid data for post has been prepared")]
+    public void GivenInvalidDataForPostHasBeenPrepared()
+    {
+        _metaData = new MetaDataBuilder()
+            .SetFirstName("Lando")
+            .SetLastName("Norris")
+            .SetPrice(111)
+            .SetDepositPaidStatus(true)
+            .SetAdditionalNeeds("super bowls")
+            .Build();
+    }
+    
     [Then(@"he gets valid response")]
     public void ThenHeGetsValidResponse()
     {
@@ -39,15 +51,20 @@ public class CreateBookingSteps : FeatureHelper
         _postResponse.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
     }
 
-    [Given(@"invalid data for post has been prepared")]
-    public void GivenInvalidDataForPostHasBeenPrepared()
+    [Then(@"bookingId must be present among others")]
+    public async Task ThenBookingIdMustBePresentAmongOthers()
     {
-        _metaData = new MetaDataBuilder()
-            .SetFirstName("Lando")
-            .SetLastName("Norris")
-            .SetPrice(111)
-            .SetDepositPaidStatus(true)
-            .SetAdditionalNeeds("super bowls")
-            .Build();
+        var listBookingIds = await _restApiClient.GetBookingIds();
+        listBookingIds.Data
+            .FirstOrDefault(b => b.BookingId == _postResponse.Data.Bookingid)
+            .Should().NotBeNull();
+        
+    }
+
+    [Then(@"get booking by id data must be equal to created post data")]
+    public async Task ThenGetBookingByIdDataMustBeEqualToCreatedPostData()
+    {
+        var getResponse = await _restApiClient.GetBookingById(_postResponse.Data.Bookingid);
+        getResponse.Data.Should().BeEquivalentTo(_metaData);
     }
 }

@@ -42,4 +42,13 @@ public class DeleteBookingSteps : FeatureHelper
     {
         _id = 11111;
     }
+
+    [Then(@"Booking Id must not be present among the others")]
+    public async Task ThenBookingIdMustNotBePresentAmongTheOthers()
+    {
+        var listBookingIds = await _restApiClient.GetBookingIds();
+        listBookingIds.Data
+            .FirstOrDefault(b => b.BookingId == _id)
+            .Should().BeNull();
+    }
 }

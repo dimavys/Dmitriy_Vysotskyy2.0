@@ -7,6 +7,7 @@ Feature: DeleteBooking
 		And a user has specified id
 		When user executes delete request
 		Then he receives 201 Created status code
+		And Booking Id must not be present among the others
 		
 	Scenario: User cannot delete booking
 		Given a user has specified invalid id

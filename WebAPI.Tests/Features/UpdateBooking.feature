@@ -8,7 +8,8 @@ Feature: UpdateBooking
 		When he puts his data
 		Then he receives 200 OK status code
 		And he gets valid response
-		
+		And get booking by id data must be equal to created data
+				
 	Scenario: User cannot update booking
 		Given valid data for post has been prepared
 		And user executes post request

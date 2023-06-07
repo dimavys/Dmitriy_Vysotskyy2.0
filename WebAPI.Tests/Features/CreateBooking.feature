@@ -6,6 +6,8 @@ Feature: User can create feature
 		When user executes post request
 		Then he receives 200 OK status code
 		And he gets valid response
+		And bookingId must be present among others
+		And get booking by id data must be equal to created post data
 	
 	Scenario: User can't create a booking
 		Given invalid data for post has been prepared
